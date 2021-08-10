@@ -1,18 +1,34 @@
 plugins {
     id 'java'
+    id 'war'
+    id 'eclipse'
+    id 'idea'
+    id "org.gretty" version "3.0.6"
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
 }
 
 group 'com.comito'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+compileJava.options.encoding("UTF-8")
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation('javax.servlet:javax.servlet-api:3.1.0')
+    testImplementation('junit:junit:4.12')
 }
+
+gretty{
+    httpPort = 8080
+    contextPath = '/'
+    servletContainer = 'jetty9'
+}
+
+def webappDir = "$rootDir/src/main/webapp"
+
 
 test {
     useJUnitPlatform()
