@@ -24,7 +24,7 @@ dependencies {
 gretty{
     httpPort = 8080
     contextPath = '/'
-    servletContainer = 'jetty9'
+    servletContainer = 'tomcat9'
 }
 
 def webappDir = "$rootDir/src/main/webapp"
